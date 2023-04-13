@@ -5,7 +5,9 @@ library(Seurat)
 ##Creating SAN data cell matrix##
 
 #load the SAN dataset 
-san.data <- Read10X(data.dir = 'SAN_GEO')
+
+
+san.data <- Read10X(data.dir = 'mouse_heart_GEO_data/SAN_GEO')
 dim(san.data) 
 
 #Initialize the Seurat object with raw data 
@@ -25,7 +27,7 @@ cellsWithMYBPHL_san <- GetAssayData(object = san.ourgene, assay = 'RNA', slot = 
 write.csv(cellsWithMYBPHL_san, 'cellswithMYBPHL_SAN.csv') 
 
 #LPF data 
-lpf.data <- Read10X(data.dir = 'LPF_GEO') 
+lpf.data <- Read10X(data.dir = 'mouse_heart_GEO_data/LPF_GEO') 
 dim(lpf.data) 
 
 lpf <- CreateSeuratObject(counts = lpf.data, min.cells = 3, min.features = 200)
@@ -37,10 +39,10 @@ lpf.ourgene
 
 cellsWithMYBPHL_lpf <- GetAssayData(object = lpf.ourgene, assay = 'RNA', slot = 'data') 
 
-write.csv(cellsWithMYBPHL_lpf, 'cellswithMYBPHL_LPS.csv') 
+write.csv(cellsWithMYBPHL_lpf, 'cellswithMYBPHL_LPF.csv') 
 
 #RPF data 
-rpf.data <- Read10X(data.dir = 'RPF_GEO') 
+rpf.data <- Read10X(data.dir = 'mouse_heart_GEO_data/RPF_GEO') 
 dim(rpf.data) 
 
 rpf <- CreateSeuratObject(counts = rpf.data, min.cells = 3, min.features = 200) 
@@ -54,7 +56,7 @@ cellsWithMYBPHL_rpf <- GetAssayData(object = rpf.ourgene, assay = 'RNA', slot = 
 write.csv(cellsWithMYBPHL_rpf, 'cellswithMYBPHL_RPF.csv') 
 
 #AVN data 
-avn.data <- Read10X(data.dir = 'AVN_GEO') 
+avn.data <- Read10X(data.dir = 'mouse_heart_GEO_data/AVN_GEO') 
 dim(avn.data) 
 
 avn <- CreateSeuratObject(counts = avn.data, min.cells = 3, min.featuers = 200)
