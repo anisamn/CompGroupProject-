@@ -1,4 +1,4 @@
-# CompGroupProject-##Languages and Packages
+# CompGroupProject-
 ## Languages and Packages
 
 ### Installation for CellRanger
@@ -24,6 +24,8 @@ remotes::install_github("satijalab/seurat", "seurat5", quiet = TRUE)
 
 ```
 library(Seurat) 
+library(patchwork) 
+library(dplyr) 
 ```
 
 ### Package Installation for Python: 
@@ -39,6 +41,12 @@ import clusteringAnalysis
 
 ```
 
-# Flags for input files: 
+## Flags for input files: 
 
-### 
+### fastqDump: downloads fastq files from all input samples 
+- fastq-dump: calls the required program 
+-I: allows for the sequences to get appended to ID .1 and ID .2 
+--split-files: splits the fastq files into two files  
+
+### Seurat
+
