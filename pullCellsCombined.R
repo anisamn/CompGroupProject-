@@ -1,6 +1,6 @@
 #load Seurat 
 library(Seurat)
-
+library(DropletUtils)
 
 ##Creating SAN data cell matrix##
 
@@ -26,6 +26,8 @@ cellsWithMYBPHL_san <- GetAssayData(object = san.ourgene, assay = 'RNA', slot = 
 
 write.csv(cellsWithMYBPHL_san, 'cellswithMYBPHL_SAN.csv') 
 
+write10xCounts(x = san.ourgene@assays$RNA@counts, path = 'cellswithMYBPHL_SAN.path')
+
 #LPF data 
 lpf.data <- Read10X(data.dir = 'mouse_heart_GEO_data/LPF_GEO') 
 dim(lpf.data) 
@@ -40,7 +42,7 @@ lpf.ourgene
 cellsWithMYBPHL_lpf <- GetAssayData(object = lpf.ourgene, assay = 'RNA', slot = 'data') 
 
 write.csv(cellsWithMYBPHL_lpf, 'cellswithMYBPHL_LPF.csv') 
-
+write10xCounts(x = lpf.ourgene@assays$RNA@counts, path = 'cellswithMYBPHL_LPF.path')
 #RPF data 
 rpf.data <- Read10X(data.dir = 'mouse_heart_GEO_data/RPF_GEO') 
 dim(rpf.data) 
@@ -54,7 +56,7 @@ rpf.ourgene
 cellsWithMYBPHL_rpf <- GetAssayData(object = rpf.ourgene, assay = 'RNA', slot = 'data') 
 
 write.csv(cellsWithMYBPHL_rpf, 'cellswithMYBPHL_RPF.csv') 
-
+write10xCounts(x = rpf.ourgene@assays$RNA@counts, path = 'cellswithMYBPHL_RPF.path')
 #AVN data 
 avn.data <- Read10X(data.dir = 'mouse_heart_GEO_data/AVN_GEO') 
 dim(avn.data) 
@@ -68,7 +70,7 @@ avn.ourgene
 cellsWithMYBPHL_avn <- GetAssayData(object = avn.ourgene, assay = 'RNA', slot = 'data') 
 
 write.csv(cellsWithMYBPHL_avn, 'cellswithMYBPHL_AVN.csv') 
-
+write10xCounts(x = avn.ourgene@assays$RNA@counts, path = 'cellswithMYBPHL_AVN.path')
 print('finished') 
 
 
