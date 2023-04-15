@@ -1,11 +1,13 @@
 #load Seurat 
-library(Seurat)
+#library(Seurat)
 
-#Use user input for gene of interest
-user.input <- readline(prompt = "Enter gene of interest: ")
-print(user.input) 
+print("I have been called")
+gene_int <- commandArgs(trailingOnly = TRUE)
+print(gene_int)
+test <- paste("test", gene_int, sep="")
+print(test)
 
-"""
+.f = function() {
 ##Creating SAN data cell matrix##
 
 #load the SAN dataset 
@@ -21,11 +23,15 @@ san <- CreateSeuratObject(counts = san.data, min.cells = 3, min.features = 200)
 san 
 
 
-#create a subset with cells that have the Mybphl gene 
-san.ourgene = subset(x = san, subset = Mybphl > 0)
+#create a subset with cells that have the Mybphl gene
+####CHANGE Mybphl to gene_int
+san.ourgene = subset(x = san, subset = gene_int > 0)
 san.ourgene 
 
 #write out to CSV 
+###CHANGE cellsWithMYBPHL_san to cellsWithGene_san
+###Add paste
+cellsWithGene_san <- paste("cellsWith", gene_int, "_san", sep="")
 cellsWithMYBPHL_san <- GetAssayData(object = san.ourgene, assay = 'RNA', slot = 'data') 
 
 write.csv(cellsWithMYBPHL_san, 'cellswithMYBPHL_SAN.csv') 
@@ -75,4 +81,5 @@ write.csv(cellsWithMYBPHL_avn, 'cellswithMYBPHL_AVN.csv')
 
 print('finished') 
 
-"""
+}
+print("This is the end of the Rscript")
