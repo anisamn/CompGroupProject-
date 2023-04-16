@@ -1,4 +1,14 @@
 # CompGroupProject-
+
+## About the project
+
+Single-cell RNA sequencing (scRNA-seq) is used for global gene expression analysis at a single cell resolution and to improve research on cell-type heterogeneity within the same tissue type. An understanding of cell heterogeneity is significant for developing targeted drugs and for the creation of new therapeutic approaches. It can also allow for a deeper understanding of the tissues and systems that use these cells. To identify the cells present, and map them to clusters, the pipeline scRNA-Seq Variation in Mouse Heart was created. The tool was created to retrieve fastq files from NCBI and map the reads pulled to a heart model created by CellRanger. The CellRanger output, combined with analysis by Seurat, can then be used to make plots and tables of significant clusters and differentially expressed features.
+To add to the original scRNA-Seq Variation in Mouse Heart tool, a new pipeline will be added after the clustering stage of pipeline two that will create a list of highly expressed MYBPHL positive cells, identify a list of highly expressed genes from these cells, then re-cluster the list of highly expressed genes. Details on this can be seen in the flowchart below, and in the design document under the wiki tab.  
+![COMPgpWorkflow](https://user-images.githubusercontent.com/125702969/227393937-d72af62e-aec8-4467-913a-bcf7bc7c1e8c.png)
+
+### References 
+Goodyer, W. R., Beyersdorf, B. M., Paik, D. T., Tian, L., Li, G., Buikema, J. W., Chirikian, O., Choi, S., Venkatraman, S., Adams, E. L., Tessier-Lavigne, M., Wu, J. C., &amp; Wu, S. M. (2019). Transcriptomic profiling of the developing cardiac conduction system at single-cell resolution. Circulation Research, 125(4), 379–397. https://doi.org/10.1161/circresaha.118.314578 
+
 ## Languages and Packages
 
 ### Installation for CellRanger
@@ -55,5 +65,40 @@ import clusteringAnalysis
 Commands using Seurat can be found in reformatDataGEO.py where the GEO barcodes, genes and matrix files are converted to Seurat readable form. And, Clustering.R where a Seurat object for each zone of the heart is created. 
 
 ### Mapping sequencing reads to the mouse reference genome using CellRanger 
+
+## Example Code 
+-- 
+
+## Workflow 
+
+### Step one: Run pipeline one
+
+This step pulls mouse heart scRNA-seq data from NCBI, organizes the FastQ files into a folder called mouse_heart_SRA_data, and stores genomic data into a folder called mouse_genome. A final output stores barcodes, features, and matrix files into a folder called cellranger_output. 
+
+Input files: 
+- twelve SRA files, each associated with different regions of the heart
+- AVN: Atrioventricular node/His bundle 
+- LPF: Left purkinje fiber 
+- RPF: Right purkinje fiber 
+- SAN: Sinoatrial node 
+
+Output files: 
+
+- Three folders with mouse heart genomic data 
+
+### Step two: Run pipeline two
+
+This step pulls mouse heart GEO data from NCBI, and stores the data into a folder called mouse_heart_GEO_data. The new information is then reformatted into Seurat readable form, and outputs are stored in seurat_output. This is where Clustering.R is run to pass the reformatted data through Seurat. 
+
+Input files: 
+- four folders from each region of the heart, each containing barcode, feature, and matrix information 
+
+Output files: 
+- seurat_output folder contianing matrices of cell and gene prevelance based on different heart zones, and three t-SNE plots mapping cells to the three zones of the heart. 
+
+### Step three: Run pipeline three 
+-- work in progress 
+
+
 
 
