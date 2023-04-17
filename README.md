@@ -49,7 +49,7 @@ nohup python pipeline_2.py > pipeline2_run.out
 python pipeline_3.py 
 ```
 
-## Languages and Packages
+## Languages and Packages Required 
 
 ### Installation for CellRanger
 CellRanger: analysis tool that processes single cell data, generates barcode matrices, and clustering
