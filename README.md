@@ -40,7 +40,11 @@ Output files:
 -- work in progress 
 
 ## Example Code 
-1. Download the example code folder to your Linux server, or run pipeline_2.py 
+1. Clone the repository  
+```
+https://github.com/anisamn/CompGroupProject-
+```
+2. If you want to use to provided example code, skip to step three. Or, run piprline_2.py
 ```
 nohup python pipeline_2.py > pipeline2_run.out
 ```
