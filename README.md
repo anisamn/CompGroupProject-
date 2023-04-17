@@ -15,6 +15,11 @@ Goodyer, W. R., Beyersdorf, B. M., Paik, D. T., Tian, L., Li, G., Buikema, J. W.
 
 This step pulls mouse heart scRNA-seq data from NCBI, organizes the FastQ files into a folder called mouse_heart_SRA_data, and stores genomic data into a folder called mouse_genome. A final output stores barcodes, features, and matrix files into a folder called cellranger_output. 
 
+Scripts: 
+1. retrieveDataSRA.py pulls mouse heart fastq data from NCBI, and a pre-computed reference genome from Cell Ranger. 
+2. reformatDataSRA.py converts the fastq files to a Cell Ranger readable form 
+3. mapReads.py maps sequencing reads to the reference genome using Cell Ranger 
+
 Input files: 
 - twelve SRA files, each associated with different regions of the heart
   - 3 AVN: Atrioventricular node/His bundle 
@@ -29,6 +34,11 @@ Output files:
 ### Step two: Run pipeline two
 
 This step pulls mouse heart GEO data from NCBI, and stores the data into a folder called mouse_heart_GEO_data. The new information is then reformatted into Seurat readable form, and outputs are stored in seurat_output. This is where Clustering.R is run to pass the reformatted data through Seurat. 
+
+Scripts: 
+1. retrieveDataGEO.py pulls mouse heart GEO data from NCBI containing associated barcodes, features, and matrix files. 
+2. reformatDataGEO.py converts the barcodes, genes and matrix files to Seurat readable forms, and creates heart region associated output files. 
+3. Clustering.R runs Seurat to cluster the cell data by performing QC, filtration, normalization, and PCA and dimensional reduction. 
 
 Input files: 
 - four folders from each region of the heart, each containing barcode, feature, and matrix information 
