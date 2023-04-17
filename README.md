@@ -17,10 +17,10 @@ This step pulls mouse heart scRNA-seq data from NCBI, organizes the FastQ files 
 
 Input files: 
 - twelve SRA files, each associated with different regions of the heart
-  - AVN: Atrioventricular node/His bundle 
-  - LPF: Left purkinje fiber 
-  - RPF: Right purkinje fiber 
-  - SAN: Sinoatrial node 
+  - 3 AVN: Atrioventricular node/His bundle 
+  - 3 LPF: Left purkinje fiber 
+  - 3 RPF: Right purkinje fiber 
+  - 3 SAN: Sinoatrial node 
 
 Output files: 
 
