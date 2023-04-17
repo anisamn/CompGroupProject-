@@ -105,17 +105,3 @@ import clusteringAnalysis
 
 ```
 
-## Flags for input files: 
-
-### fastqDump: downloads fastq files from all input samples 
-
-- fastq-dump: calls the required program 
-
-- I: allows for the sequences to get appended to ID .1 and ID .2 
-
-- --split-files: splits the fastq files into two files  
-
-### Clustering cells using Seurat
-Commands using Seurat can be found in reformatDataGEO.py where the GEO barcodes, genes and matrix files are converted to Seurat readable form. And, Clustering.R where a Seurat object for each zone of the heart is created. 
-
-### Mapping sequencing reads to the mouse reference genome using CellRanger 
