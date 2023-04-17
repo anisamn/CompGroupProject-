@@ -3,7 +3,6 @@
 
 print("I have been called")
 gene_int <- commandArgs(trailingOnly = TRUE)
-print(gene_int)
 test <- paste("test", gene_int, sep="")
 print(test)
 
