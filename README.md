@@ -41,13 +41,13 @@ Output files:
 
 ## Example Code 
 1. Download the example code folder to your Linux server, or run pipeline_2.py 
-''' 
+```
 nohup python pipeline_2.py > pipeline2_run.out
-'''
+```
 2. Run pipeline three to see clusters of specified cells 
-'''
+```
 python pipeline_3.py 
-'''
+```
 
 ## Languages and Packages
 
