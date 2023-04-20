@@ -70,7 +70,7 @@ https://github.com/anisamn/CompGroupProject-
 ```
 nohup python pipeline_2.py > pipeline2_run.out
 ```
-2. Run pipeline three to see clusters of specified cells -- try entering 'MYBPHL to test 
+3. Run pipeline three to see clusters of specified cells -- try entering 'MYBPHL to test 
 ```
 python pipeline_3.py 
 ```
