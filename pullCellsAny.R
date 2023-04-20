@@ -1,12 +1,10 @@
 #load Seurat 
-#library(Seurat)
+library(Seurat)
+library(DropletUtils)
 
-print("I have been called")
+#Load gene of interest
 gene_int <- commandArgs(trailingOnly = TRUE)
-test <- paste("test", gene_int, sep="")
-print(test)
 
-.f = function() {
 ##Creating SAN data cell matrix##
 
 #load the SAN dataset 
@@ -29,11 +27,15 @@ san.ourgene
 
 #write out to CSV 
 ###CHANGE cellsWithMYBPHL_san to cellsWithGene_san
-###Add paste
-cellsWithGene_san <- paste("cellsWith", gene_int, "_san", sep="")
-cellsWithMYBPHL_san <- GetAssayData(object = san.ourgene, assay = 'RNA', slot = 'data') 
+###Add paste as name_san
+name_san <- paste("cellsWith", gene_int, "_SAN.csv", sep="")
+cellsWithGene_san <- GetAssayData(object = san.ourgene, assay = 'RNA', slot = 'data') 
 
-write.csv(cellsWithMYBPHL_san, 'cellswithMYBPHL_SAN.csv') 
+write.csv(cellsWithGene_san, name_san) 
+
+#Add path as path_san
+path_san <- paste("cellsWith", gene_int, "_SAN.path", sep="")
+write10xCounts(x = san.ourgene@assays$RNA@counts, path = path_san)
 
 #LPF data 
 lpf.data <- Read10X(data.dir = 'mouse_heart_GEO_data/LPF_GEO') 
@@ -43,12 +45,20 @@ lpf <- CreateSeuratObject(counts = lpf.data, min.cells = 3, min.features = 200)
 
 lpf
 
-lpf.ourgene = subset(x = lpf, subset = Mybphl > 0) 
+### CHANGE Mybphl to gene_int
+lpf.ourgene = subset(x = lpf, subset = gene_int > 0) 
 lpf.ourgene 
 
-cellsWithMYBPHL_lpf <- GetAssayData(object = lpf.ourgene, assay = 'RNA', slot = 'data') 
+### CHANGE cellsWithMYBPHL_lpf to cellWithGene_lpf
+### ADD paste as name_lpf
+name_lpf <- paste("cellsWith", gene_int, "_LPF.csv", sep="")
+cellsWithGene_lpf <- GetAssayData(object = lpf.ourgene, assay = 'RNA', slot = 'data') 
 
-write.csv(cellsWithMYBPHL_lpf, 'cellswithMYBPHL_LPF.csv') 
+write.csv(cellsWithGene_lpf, name_lpf) 
+
+#Add path as path_lpf
+path_lpf <- paste("cellsWith", gene_int, "_LPF.path", sep="")
+write10xCounts(x = lpf.ourgene@assays$RNA@counts, path = path_lpf)
 
 #RPF data 
 rpf.data <- Read10X(data.dir = 'mouse_heart_GEO_data/RPF_GEO') 
@@ -57,12 +67,19 @@ dim(rpf.data)
 rpf <- CreateSeuratObject(counts = rpf.data, min.cells = 3, min.features = 200) 
 rpf 
 
-rpf.ourgene = subset(x = rpf, subset = Mybphl > 0) 
+### CHANGE Mybphl to gene_int
+rpf.ourgene = subset(x = rpf, subset = gene_int > 0) 
 rpf.ourgene 
 
-cellsWithMYBPHL_rpf <- GetAssayData(object = rpf.ourgene, assay = 'RNA', slot = 'data') 
+### CHANGE cellsWithMYBPHL_rpf to cellWithGene_rpf
+### ADD paste as name_rpf
+name_rpf <- paste("cellsWith", gene_int, "_RPF.csv", sep="")
+cellsWithGene_rpf <- GetAssayData(object = rpf.ourgene, assay = 'RNA', slot = 'data') 
 
-write.csv(cellsWithMYBPHL_rpf, 'cellswithMYBPHL_RPF.csv') 
+write.csv(cellsWithGene_rpf, name_rpf) 
+#Add path as path_rpf
+path_rpf <- paste("cellsWith", gene_int, "_RPF.path", sep="")
+write10xCounts(x = rpf.ourgene@assays$RNA@counts, path = path_rpf)
 
 #AVN data 
 avn.data <- Read10X(data.dir = 'mouse_heart_GEO_data/AVN_GEO') 
@@ -71,14 +88,19 @@ dim(avn.data)
 avn <- CreateSeuratObject(counts = avn.data, min.cells = 3, min.featuers = 200)
 avn 
 
-avn.ourgene = subset(x = avn, subset = Mybphl > 0) 
+### CHANGE Mybphl to gene_int
+avn.ourgene = subset(x = avn, subset = gene_int > 0) 
 avn.ourgene 
 
-cellsWithMYBPHL_avn <- GetAssayData(object = avn.ourgene, assay = 'RNA', slot = 'data') 
+### CHANGE cellsWithMYBPHL_avn to cellWithGene_avn
+### ADD paste as name_avn
+name_avn <- paste("cellsWith", gene_int, "_AVN.csv", sep="")
+cellsWithGene_avn <- GetAssayData(object = avn.ourgene, assay = 'RNA', slot = 'data') 
 
-write.csv(cellsWithMYBPHL_avn, 'cellswithMYBPHL_AVN.csv') 
+write.csv(cellsWithGene_avn, name_avn) 
+#Add path as path_avn
+path_avn <- paste("cellsWith", gene_int, "_AVN.path", sep="")
+write10xCounts(x = avn.ourgene@assays$RNA@counts, path = path_avn)
 
 print('finished') 
 
-}
-print("This is the end of the Rscript")
