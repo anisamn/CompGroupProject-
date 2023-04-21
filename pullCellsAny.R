@@ -4,6 +4,7 @@ library(DropletUtils)
 
 #Load gene of interest
 gene_int <- commandArgs(trailingOnly = TRUE)
+#gene_int <- "Mybphl"
 
 ##Creating SAN data cell matrix##
 
@@ -22,7 +23,9 @@ san
 
 #create a subset with cells that have the Mybphl gene
 ####CHANGE Mybphl to gene_int
-san.ourgene = subset(x = san, subset = gene_int > 0)
+#san.ourgene = subset(x = san, subset = `Mybphl` > 0)
+san.ourgene = FetchData(object = san, vars = gene_int)
+san.ourgene = san[, which(x = san.ourgene > 0)]
 san.ourgene 
 
 #write out to CSV 
@@ -46,7 +49,9 @@ lpf <- CreateSeuratObject(counts = lpf.data, min.cells = 3, min.features = 200)
 lpf
 
 ### CHANGE Mybphl to gene_int
-lpf.ourgene = subset(x = lpf, subset = gene_int > 0) 
+#lpf.ourgene = subset(x = lpf, subset = gene_int > 0) 
+lpf.ourgene = FetchData(object = lpf, vars = gene_int)
+lpf.ourgene = lpf[, which(x = lpf.ourgene > 0)]
 lpf.ourgene 
 
 ### CHANGE cellsWithMYBPHL_lpf to cellWithGene_lpf
@@ -68,7 +73,9 @@ rpf <- CreateSeuratObject(counts = rpf.data, min.cells = 3, min.features = 200)
 rpf 
 
 ### CHANGE Mybphl to gene_int
-rpf.ourgene = subset(x = rpf, subset = gene_int > 0) 
+#rpf.ourgene = subset(x = rpf, subset = gene_int > 0) 
+rpf.ourgene = FetchData(object = rpf, vars = gene_int)
+rpf.ourgene = rpf[, which(x = rpf.ourgene > 0)]
 rpf.ourgene 
 
 ### CHANGE cellsWithMYBPHL_rpf to cellWithGene_rpf
@@ -89,7 +96,9 @@ avn <- CreateSeuratObject(counts = avn.data, min.cells = 3, min.featuers = 200)
 avn 
 
 ### CHANGE Mybphl to gene_int
-avn.ourgene = subset(x = avn, subset = gene_int > 0) 
+#avn.ourgene = subset(x = avn, subset = gene_int > 0) 
+avn.ourgene = FetchData(object = avn, vars = gene_int)
+avn.ourgene = avn[, which(x = avn.ourgene > 0)]
 avn.ourgene 
 
 ### CHANGE cellsWithMYBPHL_avn to cellWithGene_avn

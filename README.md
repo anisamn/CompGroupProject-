@@ -68,7 +68,7 @@ git clone https://github.com/anisamn/CompGroupProject-
 ```
 2. Run pipeline_2.py to download the required Mouse Heart scRNA-seq data. 
 ```
-nohup python pipeline_2.py > pipeline2_run.out
+nohup python pipeline_2.py &> pipeline2_run.out
 ```
 3. Run pipeline three to see clusters of specified cells -- try entering 'MYBPHL to test 
 ```
