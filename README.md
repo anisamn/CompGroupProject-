@@ -4,7 +4,7 @@
 ![COMPgpWorkflow](https://user-images.githubusercontent.com/125702969/227393937-d72af62e-aec8-4467-913a-bcf7bc7c1e8c.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Single-cell RNA sequencing (scRNA-seq) is used for global gene expression analysis at a single cell resolution and to improve research on cell-type heterogeneity within the same tissue type. An understanding of cell heterogeneity is significant for developing targeted drugs and for the creation of new therapeutic approaches. It can also allow for a deeper understanding of the tissues and systems that use these cells. To identify the cells present, and map them to clusters, the pipeline scRNA-Seq Variation in Mouse Heart was created. The tool was created to retrieve fastq files from NCBI and map the reads pulled to a heart model created by CellRanger. The CellRanger output, combined with analysis by Seurat, can then be used to make plots and tables of significant clusters and differentially expressed features.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To add to the original scRNA-Seq Variation in Mouse Heart tool, a new pipeline will be added after the clustering stage of pipeline two that will create a list of highly expressed MYBPHL positive cells, identify a list of highly expressed genes from these cells, then re-cluster the list of highly expressed genes. Details on this can be seen in the flowchart below, and in the design document under the wiki tab.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To add to the original scRNA-Seq Variation in Mouse Heart tool, a new pipeline will be added after the clustering stage of pipeline two that will create a list of highly expressed MYBPHL positive cells, identify a list of highly expressed genes from these cells, then re-cluster the list of highly expressed genes. This addition is called pipeline_3.py and can be found in the file list above. Details on can be seen in the flowchart above, and in the design document under the wiki tab.  
 
 ### References 
 Goodyer, W. R., Beyersdorf, B. M., Paik, D. T., Tian, L., Li, G., Buikema, J. W., Chirikian, O., Choi, S., Venkatraman, S., Adams, E. L., Tessier-Lavigne, M., Wu, J. C., &amp; Wu, S. M. (2019). Transcriptomic profiling of the developing cardiac conduction system at single-cell resolution. Circulation Research, 125(4), 379–397. https://doi.org/10.1161/circresaha.118.314578 
@@ -70,7 +70,7 @@ https://github.com/anisamn/CompGroupProject-
 ```
 nohup python pipeline_2.py > pipeline2_run.out
 ```
-2. Run pipeline three to see clusters of specified cells -- try entering 'MYBPHL to test 
+3. Run pipeline three to see clusters of specified cells -- try entering 'MYBPHL to test 
 ```
 python pipeline_3.py 
 ```
@@ -118,3 +118,4 @@ import reformatDataGEO
 import clusteringAnalysis
 
 ```
+.
