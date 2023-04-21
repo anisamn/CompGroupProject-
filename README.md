@@ -64,7 +64,7 @@ The output mapped CSV files in the seruat_output folder.
 ## Example Run  
 1. Clone the repository  
 ```
-https://github.com/anisamn/CompGroupProject-
+git clone https://github.com/anisamn/CompGroupProject-
 ```
 2. Run pipeline_2.py to download the required Mouse Heart scRNA-seq data. 
 ```
@@ -74,7 +74,6 @@ nohup python pipeline_2.py > pipeline2_run.out
 ```
 python pipeline_3.py 
 ```
-4. Outputs can be found in the file -- 
 
 
 ## Languages and Packages Required 
