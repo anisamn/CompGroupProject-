@@ -5,3 +5,6 @@ import cellPull
 interest_gene = input("Enter gene of interest: ")
 #Pull all cells of indicated the indicated gene
 cellPull.pullCells(interest_gene)
+
+#perform the clustering on the cells containing gene of interest
+clusteringAnalysis_GOI.performClustering()

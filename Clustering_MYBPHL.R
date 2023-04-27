@@ -30,10 +30,10 @@ current_path<-getwd()
 
 
 #run in terminal: 
-SAN_path<-paste(current_path, "/cellswithMYBPHL_SAN.path", sep="")    #path to SAN GEO data 
-AVN_path<-paste(current_path, "/cellswithMYBPHL_AVN.path", sep="")    #path to AVN GEO data 
-LPF_path<-paste(current_path, "/cellswithMYBPHL_LPF.path", sep="")    #path to LPF GEO data 
-RPF_path<-paste(current_path, "/cellswithMYBPHL_RPF.path", sep="")    #path to RPF GEO data 
+SAN_path<-paste(current_path, "/cellsWithMybphl_SAN.path", sep="")    #path to SAN GEO data 
+AVN_path<-paste(current_path, "/cellsWithMybphl_AVN.path", sep="")    #path to AVN GEO data 
+LPF_path<-paste(current_path, "/cellsWithMybphl_LPF.path", sep="")    #path to LPF GEO data 
+RPF_path<-paste(current_path, "/cellsWithMybphl_RPF.path", sep="")    #path to RPF GEO data 
 
 
 #load data form Cell Ranger from 3 different heart zones
@@ -137,7 +137,7 @@ zoneI <- ScaleData(zoneI, features = all.genes)
 #zoneII <- ScaleData(zoneII, features = all.genes)
 
 all.genes <- rownames(zone_II_III.combined)
-zone_II__III.combined <- ScaleData(zone_II_III.combined, features = all.genes)
+zone_II_III.combined <- ScaleData(zone_II_III.combined, features = all.genes)
 
 
 ###  PERFORM LINEAR DIMENSIONAL REDUCTION ###
@@ -145,7 +145,7 @@ zone_II__III.combined <- ScaleData(zone_II_III.combined, features = all.genes)
 #perform PCA on the scaled data
 zoneI <- RunPCA(zoneI, features = VariableFeatures(object = zoneI))
 #zoneII <- RunPCA(zoneII, features = VariableFeatures(object = zoneII))
-zone_II_III.combined <- RunPCA(zone_II_III.combined, features = VariableFeatures(object = zone_II_III.combined))
+zone_II_III.combined <- RunPCA(zone_II_III.combined, features = VariableFeatures(object = zone_II_III.combined), npcs = 43)
 
 ### DETERMINE THE 'DIMENSIONALITY' OF THE DATASET ###
 
@@ -194,9 +194,9 @@ head(Idents(zone_II_III.combined), 5)
 
 ### RUN NON-LINEAR DIMENSIONAL REDUCTION (UMAP/t-SNE) ###
 #Run t-distributed Stochastic Neighbor Embedding
-zoneI_tsne_path<-paste(current_path, "/seurat_output/zoneI_mybphl.jpeg", sep="")    #path to zone I tsne
+zoneI_tsne_path<-paste(current_path, "/seurat_output_GOI/zoneI_mybphl_tsne.jpeg", sep="")    #path to zone I tsne
 #zoneII_tsne_path<-paste(current_path, "/seurat_output/zoneII_tsne.jpeg", sep="")    #path to zone II tsne
-zoneIII_tsne_path<-paste(current_path, "/seurat_output/zoneIII_mybphl.jpeg", sep="")    #path to zone III tsne
+zoneIII_tsne_path<-paste(current_path, "/seurat_output_GOI/zoneII_III_mybphl_tsne.jpeg", sep="")    #path to zone III tsne
 
 
 zoneI <- RunTSNE(zoneI,dims.use = 1:15,reduction.use = "pca")
@@ -212,21 +212,22 @@ dev.off()
 
 zone_II_III.combined <- RunTSNE(zone_II_III.combined,dims.use = 1:15, reduction.use = "pca")
 jpeg(file = zoneIII_tsne_path)         #save tsne plot as jpeg 
-DimPlot(zoneIII.combined, reduction = "tsne")
+DimPlot(zone_II_III.combined, reduction = "tsne")
 dev.off()
 
 
 ###FINDING DIFERENTIALLY EXPRESSED FEATURES (CLUSTER BIOMARKERS))###
 
 #cluster numbers described in Goodyer et al paper
-zoneI_cluster_path<-paste(current_path, "/seurat_output/zoneI_C9_mybphl.csv", sep="")    #path to cluster 9 variable ft 
+
+#zoneI_cluster_path<-paste(current_path, "/seurat_output/zoneI_C9_mybphl.csv", sep="")    #path to cluster 9 variable ft 
 #zoneII_cluster_path<-paste(current_path, "/seurat_output/zoneII_C4_HF.csv", sep="")    #path to cluster 4 variable ft
-zoneIII_cluster_path<-paste(current_path, "/seurat_output/zoneIII_C13_mybphl.csv", sep="")    #path to cluster 13 variable ft
+#zoneIII_cluster_path<-paste(current_path, "/seurat_output/zoneIII_C13_mybphl.csv", sep="")    #path to cluster 13 variable ft
 
 #find all markers of Cluster 9 in zone I
-cluster9.markers <- FindMarkers(zoneI, ident.1 = 9, min.pct = 0.25)
-head(cluster9.markers, n = 5)
-write.csv(cluster9.markers, zoneI_cluster_path) #write deferentially expressed features to csv 
+#cluster9.markers <- FindMarkers(zoneI, ident.1 = 9, min.pct = 0.25)
+#head(cluster9.markers, n = 5)
+#write.csv(cluster9.markers, zoneI_cluster_path) #write deferentially expressed features to csv 
 
 
 #find all markers of Cluster 4 in zone II
