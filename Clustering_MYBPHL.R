@@ -205,12 +205,12 @@ DimPlot(zoneI, reduction = "tsne")
 dev.off()
 
 
-#zoneII <- RunTSNE(zoneII,dims.use = 1:15, reduction.use = "pca")
-#jpeg(file = zoneII_tsne_path)         #save tsne plot as jpeg 
-#DimPlot(zoneII, reduction = "tsne")
-#dev.off()
+zoneII <- RunTSNE(zoneII,dims.use = 1:15, reduction.use = "pca")
+jpeg(file = zoneII_tsne_path)         #save tsne plot as jpeg 
+DimPlot(zoneII, reduction = "tsne")
+dev.off()
 
-zone_II_III.combined <- RunTSNE(zone_II_III.combined,dims.use = 1:15, reduction.use = "pca")
+zone_II_III.combined <- RunTSNE(zone_II_III.combined,dims.use = 1:15, reduction.use = "pca", perplexity = 10)
 jpeg(file = zoneIII_tsne_path)         #save tsne plot as jpeg 
 DimPlot(zone_II_III.combined, reduction = "tsne")
 dev.off()
@@ -237,8 +237,8 @@ dev.off()
 
 
 #find all markers of Cluster 13 in Zone III
-cluster13.markers <- FindMarkers(zone_II_III.combined, ident.1 = 9, min.pct = 0.25)
-head(cluster13.markers, n = 5)
-write.csv(cluster13.markers, zoneIII_cluster_path) #write differentials expressed features to csv
+#cluster13.markers <- FindMarkers(zone_II_III.combined, ident.1 = 9, min.pct = 0.25)
+#head(cluster13.markers, n = 5)
+#write.csv(cluster13.markers, zoneIII_cluster_path) #write differentials expressed features to csv
 
 
