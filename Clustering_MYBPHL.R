@@ -205,10 +205,10 @@ DimPlot(zoneI, reduction = "tsne")
 dev.off()
 
 
-zoneII <- RunTSNE(zoneII,dims.use = 1:15, reduction.use = "pca")
-jpeg(file = zoneII_tsne_path)         #save tsne plot as jpeg 
-DimPlot(zoneII, reduction = "tsne")
-dev.off()
+#zoneII <- RunTSNE(zoneII,dims.use = 1:15, reduction.use = "pca")
+#jpeg(file = zoneII_tsne_path)         #save tsne plot as jpeg 
+#DimPlot(zoneII, reduction = "tsne")
+#dev.off()
 
 zone_II_III.combined <- RunTSNE(zone_II_III.combined,dims.use = 1:15, reduction.use = "pca", perplexity = 10)
 jpeg(file = zoneIII_tsne_path)         #save tsne plot as jpeg 
