@@ -7,4 +7,4 @@ interest_gene = input("Enter gene of interest: ")
 cellPull.pullCells(interest_gene)
 
 #perform the clustering on the cells containing gene of interest
-clusteringAnalysis_GOI.performClustering()
+clusteringAnalysis_MYBPHL.performClustering()
