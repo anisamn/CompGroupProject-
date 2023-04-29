@@ -47,7 +47,7 @@ Output files:
 - seurat_output folder contianing matrices of cell and gene prevelance based on different heart zones, and three t-SNE plots mapping cells to the three zones of the heart. 
 
 ### Step three: Run pipeline three 
-Pipeline three is the new parameter that can recluster cells based on a gene specified by the user. This outputs six files; three CSV files containing cells associated with the gene, and three t-SNE plots of the cells that contain the gene input by the user. 
+Pipeline three is the new parameter that can recluster cells based on a gene specified by the user. This outputs six files; three CSV files containing cells associated with the gene, and three t-SNE plots of the cells that contain the gene input by the user. Please see the Design Document under the Wiki tab for more information on Pipeline three. 
 
 Scripts: 
 1. pipeline_3.py
