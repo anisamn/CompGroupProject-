@@ -53,6 +53,8 @@ Scripts:
 1. pipeline_3.py
 2. cellpull.py 
 3. pullCellsAny.R 
+4. ClusteringAnalysis_GOI.py
+5. Clustering_MYBPHL.R
 
 Input files: 
 The output mapped CSV files in the seruat_output folder. 
@@ -60,6 +62,9 @@ The output mapped CSV files in the seruat_output folder.
 - LPF_GEO 
 - RPF_GEO 
 - AVN_GEO
+
+Output: 
+seurat_output_GOI
 
 ## Example Run  
 1. Clone the repository  
