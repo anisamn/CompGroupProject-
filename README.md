@@ -47,7 +47,7 @@ Output files:
 - seurat_output folder contianing matrices of cell and gene prevelance based on different heart zones, and three t-SNE plots mapping cells to the three zones of the heart. 
 
 ### Step three: Run pipeline three 
-Pipeline three is the new parameter that can recluster cells based on a gene specified by the user. This outputs six files; three CSV files containing cells associated with the gene, and three t-SNE plots of the cells that contain the gene input by the user. Please see the Design Document under the Wiki tab for more information on Pipeline three. 
+Pipeline three is the new parameter that can recluster cells based on a gene specified by the user. This outputs six files; three CSV files containing cells associated with the gene, and three t-SNE plots of the cells that contain the gene input by the user. Please see the Design Document under the Wiki tab for more information on Pipeline three. The user specified gene of interest is case sensitive, the first letter must be upper case and the rest lower case. 
 
 Scripts: 
 1. pipeline_3.py
@@ -75,7 +75,7 @@ git clone https://github.com/anisamn/CompGroupProject-
 ```
 nohup python pipeline_2.py &> pipeline2_run.out
 ```
-3. Run pipeline three to see clusters of specified cells -- try entering 'MYBPHL to test 
+3. Run pipeline three to see clusters of specified cells -- try entering Mybphl to test 
 ```
 python pipeline_3.py 
 ```
