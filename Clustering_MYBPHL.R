@@ -235,6 +235,11 @@ cluster5.markers <- FindMarkers(zoneI, ident.1 = 5, min.pct = 0.25)
 head(cluster5.markers, n = 5)
 write.csv(cluster5.markers, zoneI_cluster_5_path) #write deferentially expressed features to csv
 
+#find all markers of Cluster 6 in zone I
+cluster6.markers <- FindMarkers(zoneI, ident.1 = 6, min.pct = 0.25)
+head(cluster6.markers, n = 5)
+write.csv(cluster6.markers, zoneI_cluster_6_path) #write deferentially expressed features to csv
+
 #find all markers of Cluster 7 in zone I
 cluster7.markers <- FindMarkers(zoneI, ident.1 = 7, min.pct = 0.25)
 head(cluster7.markers, n = 5)
