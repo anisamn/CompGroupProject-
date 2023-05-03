@@ -218,27 +218,24 @@ dev.off()
 
 ###FINDING DIFERENTIALLY EXPRESSED FEATURES (CLUSTER BIOMARKERS))###
 
-#cluster numbers described in Goodyer et al paper
+#cluster numbers as seen in TSNE plots
 
-#zoneI_cluster_path<-paste(current_path, "/seurat_output/zoneI_C9_mybphl.csv", sep="")    #path to cluster 9 variable ft 
-#zoneII_cluster_path<-paste(current_path, "/seurat_output/zoneII_C4_HF.csv", sep="")    #path to cluster 4 variable ft
-#zoneIII_cluster_path<-paste(current_path, "/seurat_output/zoneIII_C13_mybphl.csv", sep="")    #path to cluster 13 variable ft
+zoneI_cluster_4_path<-paste(current_path, "/seurat_output_GOI/zoneI_C4_mybphl.csv", sep="")    #path to cluster 4 variable ft 
+zoneI_cluster_5_path<-paste(current_path, "/seurat_output_GOI/zoneI_C5_mybphl.csv", sep="")    #path to cluster 5 variable ft
+zoneI_cluster_6_path<-paste(current_path, "/seurat_output_GOI/zoneI_C6_mybphl.csv", sep="")    #path to cluster 6 variable ft
+zoneI_cluster_7_path<-paste(current_path, "/seurat_output_GOI/zoneI_C7_mybphl.csv", sep="")    #path to cluster 5 variable ft
 
-#find all markers of Cluster 9 in zone I
-#cluster9.markers <- FindMarkers(zoneI, ident.1 = 9, min.pct = 0.25)
-#head(cluster9.markers, n = 5)
-#write.csv(cluster9.markers, zoneI_cluster_path) #write deferentially expressed features to csv 
+#find all markers of Cluster 4 in zone I
+cluster4.markers <- FindMarkers(zoneI, ident.1 = 4, min.pct = 0.25)
+head(cluster4.markers, n = 5)
+write.csv(cluster4.markers, zoneI_cluster_4_path) #write deferentially expressed features to csv 
 
+#find all markers of Cluster 5 in zone I
+cluster5.markers <- FindMarkers(zoneI, ident.1 = 5, min.pct = 0.25)
+head(cluster5.markers, n = 5)
+write.csv(cluster5.markers, zoneI_cluster_5_path) #write deferentially expressed features to csv
 
-#find all markers of Cluster 4 in zone II
-#cluster4.markers <- FindMarkers(zoneII, ident.1 = 9, min.pct = 0.25)
-#head(cluster4.markers, n = 5)
-#write.csv(cluster4.markers, zoneII_cluster_path) #write deferentially expressed features to csv
-
-
-#find all markers of Cluster 13 in Zone III
-#cluster13.markers <- FindMarkers(zone_II_III.combined, ident.1 = 9, min.pct = 0.25)
-#head(cluster13.markers, n = 5)
-#write.csv(cluster13.markers, zoneIII_cluster_path) #write differentials expressed features to csv
-
-
+#find all markers of Cluster 7 in zone I
+cluster7.markers <- FindMarkers(zoneI, ident.1 = 7, min.pct = 0.25)
+head(cluster7.markers, n = 5)
+write.csv(cluster7.markers, zoneI_cluster_7_path) #write diferentially expressed featurs to csv
